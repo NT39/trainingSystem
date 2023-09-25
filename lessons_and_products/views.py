@@ -89,7 +89,8 @@ class ProductStatsView(generics.ListAPIView):
         queryset = products.annotate(
             total_views=Count('lesson__lessonview', distinct=True),
             total_view_time=Sum('lesson__lessonview__view_time_seconds'),
-            total_students=Count('productaccess__id', distinct=True),  # Используем поле id
+            total_students=Count('productaccess__id', distinct=True),
+            # Получаем % подписей на продукт от общего количества пользователей
             acquisition_percentage=ExpressionWrapper(
                 Count('productaccess', distinct=True) * 100.0 / CustomUser.objects.count(),
                 output_field=DecimalField(max_digits=5, decimal_places=2)

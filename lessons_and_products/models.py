@@ -12,7 +12,7 @@ class CustomUser(AbstractUser):
 
 class Product(models.Model):
     product_name = models.CharField(max_length=255)
-    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)  # Связь с владельцем продукта.
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.product_name

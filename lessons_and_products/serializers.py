@@ -14,7 +14,7 @@ class LessonSerializer(serializers.ModelSerializer):
     lesson_views = LessonViewSerializer(many=True, read_only=True)
     total_views = serializers.IntegerField()
     total_view_time = serializers.IntegerField()
-    last_view_date = serializers.DateTimeField()  # Используйте DateTimeField для даты и времени
+    last_view_date = serializers.DateTimeField()
 
     class Meta:
         model = Lesson
